@@ -196,9 +196,9 @@ M1_CHIP = False
 AUTH_USER_MODEL = "users.User"
 
 # if True then also search inside CORE publications aggregator
-SEARCH_WITH_CORE = True
+SEARCH_WITH_CORE = False 
 
-TEXT_TO_TEXT_API = True
+TEXT_TO_TEXT_API = False 
 
 ENTREZ_EMAIL = "YOUR_EMAIL@SERVER.COM"
 

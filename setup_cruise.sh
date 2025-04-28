@@ -7,44 +7,44 @@ set -e
 PROJECT_DIR="cruise_literature"
 CONDA_ENV="cruise-literature"
 PYTHON_VERSION="3.9.12"
-POSTGRES_PASSWORD="YOUR_PASSWORD"
+POSTGRES_PASSWORD="abcd"
 POSTGRES_USER=$(whoami)
-SECRET_KEY="your-secret-django-key"
+SECRET_KEY="abcde-abcde-abcde"
 MINICONDA_DIR="$HOME/miniconda"
 
 echo "Starting CRUISE-screening setup on Ubuntu..."
 
 # 1. Install required packages
-echo "Installing required packages..."
-sudo apt update
-sudo apt install -y wget curl git g++ postgresql postgresql-contrib python3-pip
+# echo "Installing required packages..."
+# sudo apt update
+# sudo apt install -y wget curl git g++ postgresql postgresql-contrib python3-pip
 
 # 2. Install Miniconda
-if [ -d "$MINICONDA_DIR" ]; then
-    echo "Miniconda is already installed at $MINICONDA_DIR."
-else
-    echo "Installing Miniconda..."
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-    bash miniconda.sh -b -p $MINICONDA_DIR
-fi
+# if [ -d "$MINICONDA_DIR" ]; then
+#     echo "Miniconda is already installed at $MINICONDA_DIR."
+# else
+#     echo "Installing Miniconda..."
+#     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+#     bash miniconda.sh -b -p $MINICONDA_DIR
+# fi
 
 # Ensure Miniconda is in PATH
-export PATH="$MINICONDA_DIR/bin:$PATH"
+e# xport PATH="$MINICONDA_DIR/bin:$PATH"
 
 # Initialize Conda for bash
-if ! grep -q "conda initialize" ~/.bashrc; then
-    conda init bash
-    source ~/.bashrc
-fi
+# if ! grep -q "conda initialize" ~/.bashrc; then
+#     conda init bash
+#     source ~/.bashrc
+# fi
 
 # 3. Create Conda environment
-if conda info --envs | grep -q "$CONDA_ENV"; then
-    echo "Conda environment $CONDA_ENV already exists."
-else
-    echo "Creating Conda environment..."
-    conda create --name $CONDA_ENV python=$PYTHON_VERSION -y
-fi
-source activate $CONDA_ENV
+# if conda info --envs | grep -q "$CONDA_ENV"; then
+#     echo "Conda environment $CONDA_ENV already exists."
+# else
+#     echo "Creating Conda environment..."
+#     conda create --name $CONDA_ENV python=$PYTHON_VERSION -y
+# fi
+# source activate $CONDA_ENV
 
 # 4. Install Python dependencies
 echo "Installing Python dependencies..."
