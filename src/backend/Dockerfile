@@ -2,16 +2,16 @@ FROM python:3.8.12-buster
 
 WORKDIR /app
 
-COPY backend/requirements.txt .
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 ENV FLASK_APP=/app/search_app.py
 
-COPY backend/templates templates/
+COPY templates templates/
 
-COPY backend/search_app.py .
+COPY search_app.py .
 ARG config_file
-COPY backend/$config_file /config/search_app_config.json
+COPY $config_file /config/search_app_config.json
 
 EXPOSE 8880
 

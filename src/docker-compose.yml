@@ -1,0 +1,54 @@
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: cruise
+      POSTGRES_PASSWORD: cruise
+      POSTGRES_DB: cruise_literature
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - cruise-net
+
+  backend:
+    build:
+      context: ./cruise_literature
+      dockerfile: Dockerfile
+    volumes:
+      - ./cruise_literature:/app
+    env_file: .env
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    networks:
+      - cruise-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - cruise-net
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - cruise-net
+
+volumes:
+  pgdata:
+
+networks:
+  cruise-net:

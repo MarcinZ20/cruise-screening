@@ -1,0 +1,89 @@
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: cruise
+      POSTGRES_PASSWORD: cruise
+      POSTGRES_DB: cruise_literature
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - cruise-net
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.4
+    container_name: es-cruise-literature
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - bootstrap.memory_lock=true
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/es:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    networks:
+      - cruise-net
+
+  search_app:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        config_file: search_app_config.json
+    image: dossier/cruise-literature-search_app:1
+    restart: on-failure
+    depends_on:
+      - elasticsearch
+    ports:
+      - "9880:8880"
+    networks:
+      - cruise-net
+
+  backend:
+    build:
+      context: ./cruise_literature
+      dockerfile: Dockerfile
+    volumes:
+      - ./cruise_literature:/app
+    env_file: .env
+    depends_on:
+      - db
+      - elasticsearch
+    ports:
+      - "8000:8000"
+    networks:
+      - cruise-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - cruise-net
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - cruise-net
+
+volumes:
+  pgdata:
+
+networks:
+  cruise-net:

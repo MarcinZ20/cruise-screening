@@ -81,7 +81,9 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://172.18.179.206:3000"
+    "http://172.18.179.206:3000",
+    "http://nginx",
+    "http://localhost:80"
 ]
 CORS_ALLOW_CREDENTIALS = True
 
