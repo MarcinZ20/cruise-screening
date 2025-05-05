@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,6 +30,12 @@ function Header({ messages }) {
         navigate('/');
     };
 
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDarkMode);
+    }, [isDarkMode]);
+
     return (
         <>
             <nav className="navbar is-light navbar-height" role="navigation" aria-label="main navigation">
@@ -37,6 +43,22 @@ function Header({ messages }) {
                     <a className="navbar__logo" href="/">
                         <img src="cruise-logo.png" width="60" height="60" alt="Cruise Logo" />
                     </a>
+                    <div className="flex items-center gap-4">
+                        <span className="text-sm">☀️</span>
+                        <button
+                        onClick={() => setIsDarkMode(!isDarkMode)}
+                        className={`w-14 h-8 flex items-center rounded-full p-1 transition-colors duration-300 ${
+                            isDarkMode ? "bg-yellow-400" : "bg-gray-300"
+                        }`}
+                        >
+                        <div
+                            className={`bg-white w-6 h-6 rounded-full shadow-md transform transition-transform duration-300 ${
+                            isDarkMode ? "translate-x-6" : "translate-x-0"
+                            }`}
+                        ></div>
+                        </button>
+                        <span className="text-sm">🌙</span>
+                    </div>
                     <a
                         role="button"
                         className="navbar-burger"
