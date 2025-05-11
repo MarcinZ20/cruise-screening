@@ -38,7 +38,7 @@ function Home() {
           />
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors duration-200"
+            className="bg-orange hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors duration-200"
           >
             Search
           </button>
