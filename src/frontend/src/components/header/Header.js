@@ -25,7 +25,7 @@ function Header({ messages }) {
         <div className="flex items-center">
           <a href="/">
             <img
-              src="cruise-logo.png"
+              src="cruise-logo-removebg.png"
               alt="Cruise Logo"
               width="60"
               height="60"
