@@ -13,6 +13,10 @@ module.exports = {
         background: {
           light: '#ffffff',
           dark: '#364958',
+          darker: '#424242'
+        },
+        background2: {
+          dark: '#424242'
         },
         text: {
           light: '#364958',

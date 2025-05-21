@@ -39,15 +39,15 @@ const faqData = [
 function Faq() {
     return (
         <Base>
-            <div className="max-w-3xl mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow-lg my-12">
+            <div className="max-w-3xl mx-auto p-6 bg-background-light dark:bg-background2-dark border border-gray-200 rounded-lg shadow-lg my-12">
                 <h1 className="text-3xl font-bold text-orange-600 text-center mb-8">Frequently Asked Questions</h1>
                 
                 {faqData.map((item, index) => (
                     <div key={index} className="mb-6">
-                        <h2 className="text-xl font-semibold text-gray-800 border-l-4 pl-3 border-orange-600 mb-4">
+                        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 dark:bg-background2-dark border-l-4 pl-3 border-orange-600 mb-4">
                             {item.question}
                         </h2>
-                        <p className="text-gray-600 text-base leading-relaxed">
+                        <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
                             {item.answer}
                         </p>
                     </div>
