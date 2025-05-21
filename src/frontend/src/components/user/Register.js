@@ -38,9 +38,14 @@ function Register() {
     <Base>
       <div className="flex items-center justify-center min-h-[80vh] px-4 my-2">
         <div className="w-full max-w-md bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
-          <h1 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-gray-100">
-            Create a new account
-          </h1>
+          <div className="flex flex-col items-center justify-center p-1 mb-3">
+            <h1 className="text-4xl font-bold mb-2 text-center text-gray-800 dark:text-gray-100">
+              Sign up
+            </h1>
+            <p className="text-sm dark:text-white">
+              Create your personal account
+            </p>
+          </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Row 1: First Name + Last Name (50/50) */}
