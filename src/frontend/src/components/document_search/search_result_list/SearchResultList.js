@@ -36,8 +36,8 @@ const SearchResultList = ({ searchQuery, source, currentPage }) => {
       setTotalPages(
         response.data.search_result.length > 0
           ? Math.ceil(
-              response.data.search_result.length / response.data.page_size,
-            )
+            response.data.search_result.length / response.data.page_size,
+          )
           : 1,
       );
       setCurrentPageState(Number(currentPage));
@@ -51,7 +51,7 @@ const SearchResultList = ({ searchQuery, source, currentPage }) => {
 
   return (
     <div className="m-2 p-2 search-results__list">
-      <h2 className="text-2xl font-semibold mb-2 text-dark">
+      <h2 className="text-2xl font-semibold mb-2  dark:text-text-dimmed">
         Search results for{" "}
         <span className="text-orange-400">{searchQuery}</span>
       </h2>
@@ -68,7 +68,7 @@ const SearchResultList = ({ searchQuery, source, currentPage }) => {
 
       {searchResult?.length > 0 ? (
         <>
-          <p className="mb-4">
+          <p className="mb-4 dark:text-text-dimmed">
             Returned{" "}
             <strong className="text-orange-400">
               {uniqueSearches} unique search results
@@ -85,7 +85,7 @@ const SearchResultList = ({ searchQuery, source, currentPage }) => {
             })}
         </>
       ) : (
-        <p>No search results are available ({searchTime} seconds)</p>
+        <p className="dark:text-text-dimmed">No search results are available ({searchTime} seconds)</p>
       )}
 
       {totalPages > 1 && (

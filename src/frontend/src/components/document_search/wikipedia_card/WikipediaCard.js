@@ -2,7 +2,7 @@ import React from "react";
 
 const WikipediaCard = ({ matchedWikiPage }) => {
   return (
-    <article className="bg-gray-100 p-2 my-4 rounded-lg shadow-md card--wiki">
+    <article className="bg-gray-100 dark:bg-background-darker p-2 my-4 rounded-lg shadow-md card--wiki">
       <div className="card-content">
         {!matchedWikiPage.ambiguous && (
           <>
@@ -12,7 +12,7 @@ const WikipediaCard = ({ matchedWikiPage }) => {
         )}
 
         <div className="flex flex-column items-center justify-between mb-1 py-2">
-          <p className="text-lg font-medium">
+          <p className="text-lg font-medium dark:text-text-dimmed">
             <a
               href={matchedWikiPage.url}
               target="_blank"
@@ -34,7 +34,7 @@ const WikipediaCard = ({ matchedWikiPage }) => {
 
       <div className="card-content">
         <div className="content">
-          <p>{matchedWikiPage.snippet}</p>
+          <p className="dark:text-text-dimmed">{matchedWikiPage.snippet}</p>
         </div>
       </div>
     </article>
