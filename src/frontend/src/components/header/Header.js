@@ -13,6 +13,7 @@ function Header({ messages }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDarkMode);
     localStorage.setItem("darkMode", isDarkMode);
   }, [isDarkMode]);
 
