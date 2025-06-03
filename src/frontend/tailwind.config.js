@@ -8,6 +8,14 @@ module.exports = {
         orange: {
           default: "#f58549",
         },
+        yellow: {
+          default: "#fbc687",
+          hover: "#E6B566",
+        },
+        red: {
+          default: "#e97777",
+          hover: "#C96868",
+        },
         background: {
           light: "#ffffff",
           dark: "#5d5f71",
