@@ -20,7 +20,7 @@ function Header({ messages }) {
 
   return (
     <>
-      <nav className="flex items-center justify-between px-6 py-4 bg-white dark:bg-gray-800">
+      <nav className="flex items-center justify-between px-6 py-4 bg-white dark:bg-background-darker">
         {/* Logo */}
         <div className="flex items-center">
           <a href="/">
@@ -44,7 +44,7 @@ function Header({ messages }) {
                 {user.username}
               </button>
               {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 shadow-lg rounded-md z-50">
+                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-background-darker shadow-lg rounded-md z-50">
                   <a
                     href="/profile"
                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
@@ -115,7 +115,7 @@ function Header({ messages }) {
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-gray-600 dark:text-white focus:outline-none"
+            className="text-gray-600 dark:text-text-dimmed focus:outline-none"
           >
             <svg
               className="w-6 h-6"
@@ -136,25 +136,25 @@ function Header({ messages }) {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden px-6 py-4 space-y-2 bg-white dark:bg-gray-800 shadow-md">
+        <div className="lg:hidden px-6 py-4 space-y-2 bg-white dark:bg-background-darker shadow-md">
           {isAuthenticated ? (
             <>
               <a
                 href="/profile"
-                className="block text-gray-700 dark:text-gray-200 hover:underline"
+                className="block text-gray-700 dark:text-text-dimmed hover:underline"
               >
                 My profile
               </a>
               <a
                 href="/literature-reviews"
-                className="block text-gray-700 dark:text-gray-200 hover:underline"
+                className="block text-gray-700 dark:text-text-dimmed hover:underline"
               >
                 My reviews
               </a>
               {user?.is_superuser && (
                 <a
                   href="/organisations"
-                  className="block text-gray-700 dark:text-gray-200 hover:underline"
+                  className="block text-gray-700 dark:text-text-dimmed hover:underline"
                 >
                   Organisations
                 </a>
@@ -170,13 +170,13 @@ function Header({ messages }) {
             <>
               <a
                 href="/login"
-                className="block text-gray-700 dark:text-gray-200 hover:underline"
+                className="block text-gray-700 dark:text-text-dimmed hover:underline"
               >
                 Log in
               </a>
               <a
                 href="/register"
-                className="block text-gray-700 dark:text-gray-200 hover:underline font-semibold"
+                className="block text-gray-700 dark:text-text-dimmed hover:underline font-semibold"
               >
                 Sign up
               </a>
