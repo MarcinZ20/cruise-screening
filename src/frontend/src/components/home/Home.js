@@ -34,11 +34,11 @@ function Home() {
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search CRUISE"
             aria-label="Search"
-            className="w-full flex-1 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+            className="w-full flex-1 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-background-darker dark:text-text-dimmed focus:outline-none focus:ring-2 focus:ring-orange-default focus:border-transparent"
           />
           <button
             type="submit"
-            className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg transition-colors duration-200"
+            className="bg-orange-default hover:bg-orange-600 text-white dark:text-text-dimmed px-6 py-2 rounded-lg transition-colors duration-200"
           >
             Search
           </button>
