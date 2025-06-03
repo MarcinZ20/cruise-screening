@@ -6,11 +6,14 @@ function Header({ messages }) {
   const { isAuthenticated, user, logout } = useAuth();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Check localStorage for dark mode preference
+    return localStorage.getItem("darkMode") === "true" || false;
+  });
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDarkMode);
+    localStorage.setItem("darkMode", isDarkMode);
   }, [isDarkMode]);
 
   const handleLogout = async () => {
@@ -47,20 +50,20 @@ function Header({ messages }) {
                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-background-darker shadow-lg rounded-md z-50">
                   <a
                     href="/profile"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    className="block px-4 py-2 text-text-dimmed hover:bg-gray-100 dark:hover:bg-gray-600"
                   >
                     My profile
                   </a>
                   <a
                     href="/literature-reviews"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    className="block px-4 py-2 text-text-dimmed hover:bg-gray-100 dark:hover:bg-gray-600"
                   >
                     My reviews
                   </a>
                   <hr className="border-t my-1 dark:border-gray-600" />
                   <button
                     onClick={handleLogout}
-                    className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 text-text-dimmed"
                   >
                     Logout
                   </button>
