@@ -23,7 +23,7 @@ As a minimum, you need to install the first two parts.
 ### 1.1 Fast installation for Ubuntu/WSL
 
 Replace placeholders (YOUR_PASSWORD, your-secret-django-key, etc.) in the script `setup_cruise.sh` with your actual configurations.
-```
+```bash
 chmod +x setup_cruise.sh
 bash setup_cruise.sh
 ```
